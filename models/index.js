@@ -1,3 +1,3 @@
 module.exports = {
-  Catch: require("./ctrch")
+  Catch: require("./catch")
 };
