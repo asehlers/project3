@@ -28,17 +28,11 @@ class SignupForm extends Component {
 				password: this.state.password
 			})
 			.then(response => {
-				console.log(response)
-				if (!response.data.errmsg) {
-					console.log('youre good')
-					this.setState({
-						redirectTo: '/login'
-					})
-				} else {
-					console.log('duplicate')
-				}
-			})
-	}
+				console.log(response)})
+			.catch(error => {
+				console.log(error.response.data)})
+			}
+			
 	render() {
 		if (this.state.redirectTo) {
 			return <Redirect to={{ pathname: this.state.redirectTo }} />
