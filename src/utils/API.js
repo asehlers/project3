@@ -1,6 +1,22 @@
 import axios from "axios";
 
 export default {
+  // Gets all regulation
+  getRegulation: function() {
+    return axios.get("/api/regulation");
+  },
+  // Gets the regulation with the given id
+  getRegulation: function(id) {
+    return axios.get("/api/regulation/" + id);
+  },
+  // Deletes the regulation with the given id
+  deleteRegulation: function(id) {
+    return axios.delete("/api/regulation/" + id);
+  },
+  // Saves a regulation to the database
+  saveRegulation: function(regulationData) {
+    return axios.post("/api/regulation", regulationData);
+  },
   // Gets all catch
   getCatch: function() {
     return axios.get("/api/catch");
