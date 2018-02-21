@@ -73,7 +73,7 @@ if (process.env.NODE_ENV === 'production') {
 
 /* Express app ROUTING */
 app.use('/auth', require('./routes'))
-
+app.use('/api', require('./routes/api'))
 // ====== Error handler ====
 app.use(function(err, req, res, next) {
 	console.log('====== ERROR =======')
