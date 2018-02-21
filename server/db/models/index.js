@@ -1,3 +1,4 @@
 module.exports = {
-  Catch: require("./catch")
+  Catch: require("./catch"),
+  Regulations: require("./regulations")
 };
