@@ -32,5 +32,13 @@ export default {
   // Saves a catch to the database
   saveCatch: function(catchData) {
     return axios.post("/api/catch", catchData);
+  },
+  // Returns all users
+  getUsers: function() {
+    return axios.post("/api/users");
+  },
+  // Gets the user with the given id
+  getUser: function(id) {
+    return axios.get("/api/users/" + id);
   }
 };

@@ -1,4 +1,5 @@
 module.exports = {
   Catch: require("./catch"),
-  Regulation: require("./regulation")
+  Regulation: require("./regulation"),
+  User: require("./user")
 };

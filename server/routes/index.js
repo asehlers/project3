@@ -1,12 +1,13 @@
 const express = require('express')
 const router = express.Router()
+const path = require ('path');
 const User = require('../db/models/user')
 const passport = require('../passport')
 const apiRoutes = require('./api')
 const { check, validationResult } = require('express-validator/check');
 const { matchedData, sanitize } = require('express-validator/filter');
 
-// API Routes
+// API and users Routes
 router.use("/api", apiRoutes);
 
 //authenticates user using google strategy
@@ -123,7 +124,7 @@ router.post('/signup', [
 
 // If no API routes are hit, send the React app
 router.use(function(req, res) {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  res.sendFile(path.join(__dirname, "../../build/index.html"));
 });
 
 module.exports = router

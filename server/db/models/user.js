@@ -52,4 +52,4 @@ userSchema.pre('save', function(next) {
 
 // Create reference to User & export
 const User = mongoose.model('User', userSchema)
-module.exports = User
+module.exports = User;
