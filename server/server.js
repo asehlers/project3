@@ -74,6 +74,7 @@ if (process.env.NODE_ENV === 'production') {
 /* Express app ROUTING */
 app.use('/auth', require('./routes'))
 app.use('/api', require('./routes/api'))
+app.use('/users', require('./routes'))
 
 // Scrape data from one site and place it into the mongodb db
 

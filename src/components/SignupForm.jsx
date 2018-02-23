@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
+import {Row, Col, Input} from 'react-materialize'
 
 class SignupForm extends Component {
 	constructor() {
@@ -28,46 +29,48 @@ class SignupForm extends Component {
 				password: this.state.password
 			})
 			.then(response => {
-				console.log(response)
-				if (!response.data.errmsg) {
-					console.log('youre good')
-					this.setState({
-						redirectTo: '/login'
-					})
-				} else {
-					console.log('duplicate')
-				}
-			})
-	}
+				console.log(response)})
+			.catch(error => {
+				console.log(error.response.data)})
+			}
+
+
+			
 	render() {
 		if (this.state.redirectTo) {
 			return <Redirect to={{ pathname: this.state.redirectTo }} />
 		}
 		return (
-			<div className="SignupForm">
-				<h1>Signup form</h1>
-				<label htmlFor="username">Username: </label>
-				<input
-					type="text"
-					name="username"
-					value={this.state.username}
-					onChange={this.handleChange}
-				/>
-				<label htmlFor="password">Password: </label>
-				<input
-					type="password"
-					name="password"
-					value={this.state.password}
-					onChange={this.handleChange}
-				/>
-				<label htmlFor="confirmPassword">Confirm Password: </label>
-				<input
-					type="password"
-					name="confirmPassword"
-					value={this.state.confirmPassword}
-					onChange={this.handleChange}
-				/>
-				<button onClick={this.handleSubmit}>Sign up</button>
+			<div className = "container SignupForm">	
+				<Row>
+					<Input
+						name="username"
+						type="email" 
+						label="Username"
+						value={this.state.username}
+						onChange={this.handleChange} 
+						s={12} 
+					/>
+					<Input 
+						name= "password" 
+						type="password" 
+						label="Password"
+						onChange={this.handleChange}
+						value={this.state.password}
+						s={12} 
+					/>
+					<Input 
+						name= "confirmPassword" 
+						type="password" 
+						label="Confirm Password"
+						onChange={this.handleChange}
+						value={this.state.confirmPassword}
+						s={12} 
+					/>
+				</Row>
+				<Row>
+					<button onClick={this.handleSubmit}>Sign Up</button>
+				</Row>
 			</div>
 		)
 	}

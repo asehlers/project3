@@ -6,5 +6,6 @@ const usersRoutes = require("./users");
 // catch and regulation routes
 router.use("/catch", catchRoutes);
 router.use("/regulation", regulationRoutes);
+router.use("/users", usersRoutes);
 
 module.exports = router;
