@@ -6,7 +6,7 @@ const apiRoutes = require('./api')
 
 // API Routes
 router.use("/api", apiRoutes);
-// adding a comment to test
+
 router.get('/google', passport.authenticate('google', { scope: ['profile'] }))
 router.get(
 	'/google/callback',
