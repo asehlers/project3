@@ -6,7 +6,9 @@ import LoginForm from './components/Login/LoginForm'
 import SignupForm from './components/SignupForm'
 import Header from './components/Header'
 import Home from './components/Home'
+import Catch from './pages/Catch'
 import DisplayLinks from './components/DisplayLinks'
+
 
 class App extends Component {
 	constructor() {
@@ -82,6 +84,7 @@ class App extends Component {
 				{/*  ROUTES */}
 				{/* <Route exact path="/" component={Home} /> */}
 				<Route exact path="/" render={() => <Home user={this.state.user} />} />
+				<Route exact path="/catch" component={Catch} />
 				<Route
 					exact
 					path="/login"

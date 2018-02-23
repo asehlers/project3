@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+//define detailed catch schema for specific fish info
 const detailedCatch = new Schema({
   image: {type: String},
   fishName: {type: String},
@@ -11,7 +12,7 @@ const detailedCatch = new Schema({
   notes: {type: String}
 });
 
-
+//define catch schema for high level information
 const catchSchema = new Schema({
   amountCaught: { type: Number, required: true },
   location: { type: String, required: true },

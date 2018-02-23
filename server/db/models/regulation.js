@@ -11,13 +11,13 @@ const Schema = mongoose.Schema;
 //   notes: {type: String}
 // });
 
-
+//Define regulation schema
 const regulationSchema = new Schema({
   state: { type: String, required: true },
   fishName: { type: String, required: true },
   season: {type: String},
-  length: {type: Number},
-  limit: {type: Number},
+  length: {type: String},
+  limit: {type: String},
   regulationLocation: {type: String}
 });
 
