@@ -1,4 +1,4 @@
-// import React, { Component } from "react";
+import React, { Component } from "react";
 // import DeleteBtn from "../../components/DeleteBtn";
 // import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
@@ -6,6 +6,7 @@ import API from "../../utils/API";
 // import { Col, Row, Container } from "../../components/Grid";
 // import { List, ListItem } from "../../components/List";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
+import nyScraper from "../../scraper/nyScraper.js";
 
 class Catch extends Component {
   state = {
@@ -13,20 +14,24 @@ class Catch extends Component {
   };
 
   componentDidMount() {
-    this.loadBooks();
+    this.loadCatch();
+    // let tempRegs = nyScraper();
+    // API.saveRegulation(tempRegs[0])
+    //   .then(res => this.loadRegulation())
+    //   .catch(err => console.log(err));
   }
 
-  loadBooks = () => {
-    API.getBooks()
+  loadCatch = () => {
+    API.getCatch()
       .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+        this.setState({ catches: res.data, title: "", author: "", synopsis: "" })
       )
       .catch(err => console.log(err));
   };
 
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
+  deleteCatch = id => {
+    API.deleteCatch(id)
+      .then(res => this.loadCatch())
       .catch(err => console.log(err));
   };
 
@@ -40,12 +45,12 @@ class Catch extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.title && this.state.author) {
-      API.saveBook({
+      API.saveCatch({
         title: this.state.title,
         author: this.state.author,
         synopsis: this.state.synopsis
       })
-        .then(res => this.loadBooks())
+        .then(res => this.loadCatch())
         .catch(err => console.log(err));
     }
   };
@@ -57,4 +62,4 @@ class Catch extends Component {
   }
 }
 
-export default Books;
+export default Catch;

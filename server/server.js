@@ -14,7 +14,7 @@ const dbConnection = require('./db') // loads our connection to the mongo databa
 const passport = require('./passport')
 const app = express()
 const PORT = process.env.PORT || 8080
-
+const scraper = require("./scraper/scraper.js");
 // ===== Middleware ====
 app.use(morgan('dev'))
 app.use(
@@ -75,6 +75,12 @@ if (process.env.NODE_ENV === 'production') {
 app.use('/auth', require('./routes'))
 app.use('/api', require('./routes/api'))
 
+// Scrape data from one site and place it into the mongodb db
+
+  // Make a request for the news section of ycombinator
+
+ 
+
 // ====== Error handler ====
 app.use(function(err, req, res, next) {
 	console.log('====== ERROR =======')
@@ -86,3 +92,53 @@ app.use(function(err, req, res, next) {
 app.listen(PORT, () => {
 	console.log(`App listening on PORT: ${PORT}`)
 })
+
+// scraper("https://www.dec.ny.gov/outdoor/7894.html", [
+// 	"fishName",
+// 	"length",
+// 	"limit",
+// 	"season",
+// 	"New York", 
+// 	"Salt Water",
+// 	"tbody tr"]
+// );
+
+// scraper("http://www.eregulations.com/newyork/fishing/statewide-angling-regulations/", [
+// 	"fishName",
+// 	"season",
+// 	"length",
+// 	"limit",
+// 	"New York", 
+// 	"Fresh Water",
+// 	"tbody tr"]
+// );
+
+// scraper("http://www.eregulations.com/newjersey/fishing/saltwater/state-size-possession-limits/", [
+// 	"fishName",
+// 	"season",
+// 	"length",
+// 	"limit",
+// 	"New Jersey", 
+// 	"Salt Water",
+// 	"tbody tr"]
+// );
+
+// scraper("http://www.eregulations.com/newjersey/fishing/freshwater/size-season-creel-limits/", [
+// 	"fishName",
+// 	"season",
+// 	"length",
+// 	"limit",
+// 	"New Jersey", 
+// 	"Fresg Water",
+// 	"tbody tr"]
+// );
+
+// scraper("http://pfbc.pa.gov/fishpub/summaryad/inland.html", [
+// 	"fishName",
+// 	"season",
+// 	"length",
+// 	"limit",
+// 	"Pennsylvania", 
+// 	"Fresh Water",
+//  	"tbody tr"]
+// );

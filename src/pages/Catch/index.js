@@ -1,1 +1,1 @@
-export { default } from "./catch.js";
+export { default } from "./Catch.js";
