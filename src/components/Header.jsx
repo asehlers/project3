@@ -4,25 +4,15 @@ import React from 'react'
 const Header = props => {
 	let Greeting
 	if (props.user === null) {
-		Greeting = <p>Hello guest</p>
+		Greeting = 'Hello visitor'
 	} else if (props.user.firstName) {
-		Greeting = (
-			<p>
-				Welcome back, <strong>{props.user.firstName}</strong>
-			</p>
-		)
+		Greeting = `Welcome back, ${props.user.firstName}`
 	} else if (props.user.local.username) {
-		Greeting = (
-			<p>
-				Welcome back, <strong>{props.user.local.username} </strong>
-			</p>
-		)
+		Greeting = `Welcome back, ${props.user.local.username}`
 	}
 	return (
-		<div className="Header">
-			{Greeting}
-		</div>
+			<p className = "navUser">{Greeting}</p>
 	)
 }
 
-export default Header
+export default Header;
