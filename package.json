@@ -22,9 +22,9 @@
 		"passport-local": "^1.0.0",
 		"react": "^15.5.4",
 		"react-dom": "^15.5.4",
+		"react-materialize": "^2.0.0",
 		"react-router-dom": "^4.1.2",
 		"request": "^2.83.0"
-		"react-router-dom": "^4.1.2"
 	},
 	"devDependencies": {
 		"concurrently": "^3.5.0",

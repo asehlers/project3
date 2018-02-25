@@ -3,11 +3,10 @@ import axios from 'axios'
 import { Route, Link } from 'react-router-dom'
 import './App.css'
 import LoginForm from './components/Login/LoginForm'
-import SignupForm from './components/SignupForm'
-import Header from './components/Header'
-import Home from './components/Home'
+import SignupForm from './components/Signup/SignupForm'
+import Home from './components/Home/Home'
 import Catch from './pages/Catch'
-import DisplayLinks from './components/DisplayLinks'
+import TopNav from './components/TopNav'
 
 
 class App extends Component {
@@ -71,23 +70,28 @@ class App extends Component {
 	}
 
 	render() {
+		const loggedInStatus = this.state.loggedIn;
+		let toDisplay;
+		
+		//If user is logged in the component that is displayed is their "Hompage". Otherwise, the login screen. 
+		if(loggedInStatus){
+			toDisplay = <Home user={this.state.user} />
+		}else{
+			toDisplay = <LoginForm _login={this._login} _googleSignin={this._googleSignin}/>
+		}
+
 		return (
 			<div className="App">
 
-				{/* {Nav aka DisplayLinks} */}
-				<DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
+				{/* {Nav */}
+				<TopNav _logout={this._logout} loggedIn={this.state.loggedIn} user={this.state.user}/>
 
-				{/* {Main App Header} */}
+				{/* {This is just here for reference} */}
 				<h1>This is the main App component</h1>
-				<Header user={this.state.user} />
 				
 				{/*  ROUTES */}
-				{/* <Route exact path="/" component={Home} /> */}
-				<Route exact path="/" render={() => <Home user={this.state.user} />} />
-				<Route exact path="/catch" component={Catch} />
-				<Route
-					exact
-					path="/login"
+				<Route exact path="/" render={() => toDisplay} />
+				<Route exact path="/login" 
 					render={() =>
 						<LoginForm
 							_login={this._login}
@@ -95,7 +99,9 @@ class App extends Component {
 						/>}
 				/>
 				<Route exact path="/signup" component={SignupForm} />
-				{/* <LoginForm _login={this._login} /> */}
+
+				{/* Route for catch */}
+				<Route exact path="/catch" component={Catch} />
 			</div>
 		)
 	}
