@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 // import { Link } from "react-router-dom";
-import {Dropdown, Button, NavItem, Row, Col} from "react-materialize";
+import {Dropdown, Button, NavItem, Row, Col, Table} from "react-materialize";
+
 class Regulations extends Component {
   state = {
-    regulations: []
+    regulations: [],
+    visibleRegulations: [],
+    state: "",
+    fishName: "",
+    regulationOutput: []
   };
 
   componentDidMount() {
@@ -18,7 +23,10 @@ class Regulations extends Component {
   loadRegulations = () => {
     API.getRegulation()
       .then(res =>
-        this.setState({ regulations: res.data })
+        this.setState({ 
+          regulations: res.data,
+          visibleRegulations: res.data
+         })
       )
       .catch(err => console.log(err));
   };
@@ -30,9 +38,33 @@ class Regulations extends Component {
   // };
 
   handleInputChange = event => {
+    event.preventDefault();
+    console.log("event.target", event.target);
     const { name, value } = event.target;
     this.setState({
       [name]: value
+    });
+  };
+
+  handleStateChange = event => {
+    event.preventDefault();
+    console.log("event.target", event.target.text);
+    const value = event.target.text;
+    const visibleRegulations = this.state.regulations.filter(regulation => regulation.state === value);
+    this.setState({
+      state: value,
+      visibleRegulations: visibleRegulations
+    });
+  };
+
+  handleFishChange = event => {
+    event.preventDefault();
+    console.log("event.target", event.target.text);
+    const value = event.target.text;
+    const regulationOutput = this.state.visibleRegulations.filter(regulation => regulation.fishName === value);
+    this.setState({
+      fishName: value,
+      regulationOutput: regulationOutput
     });
   };
 
@@ -58,9 +90,11 @@ class Regulations extends Component {
             <Dropdown trigger={
                 <Button>States</Button>
               }>
-              <NavItem>New York</NavItem>
-              <NavItem>New Jersey</NavItem>
-              <NavItem>Pennsylvania</NavItem>
+              <NavItem onClick={this.handleStateChange}>New York</NavItem>
+              <NavItem divider />
+              <NavItem onClick={this.handleStateChange}>New Jersey</NavItem>
+              <NavItem divider />
+              <NavItem onClick={this.handleStateChange}>Pennsylvania</NavItem>
             </Dropdown>
           </Col>
         </Row>
@@ -69,10 +103,39 @@ class Regulations extends Component {
             <Dropdown trigger={
                 <Button large >---------------------Fish-------------------------</Button>
               }>
-              {this.state.regulations.map(regulation => <NavItem>{regulation.fishName}</NavItem>)}
+              {this.state.visibleRegulations.map(regulation => {
+                return(
+                  <div>
+                  <NavItem divider />
+                  <NavItem onClick={this.handleFishChange}>{regulation.fishName}</NavItem>
+                  </div>
+                );
+              })}
             </Dropdown>
           </Col>
         </Row>
+        <Table>
+          <thead>
+            <tr>
+              <th data-field="fishName">Name</th>
+              <th data-field="season">Season</th>
+              <th data-field="length">Length</th>
+              <th data-field="limit">Limit</th>
+            </tr>
+          </thead>
+          <tbody>
+          {this.state.regulationOutput.map(regulation => {
+                return(
+                  <tr>
+                    <td>{regulation.fishName}</td>
+                    <td>{regulation.season}</td>
+                    <td>{regulation.length}</td>
+                    <td>{regulation.limit}</td>
+                </tr>
+                );
+              })}
+          </tbody>
+        </Table>
       </div>
     );
   }
