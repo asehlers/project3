@@ -1,12 +1,7 @@
 import React, { Component } from "react";
-// import DeleteBtn from "../../components/DeleteBtn";
-// import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 // import { Link } from "react-router-dom";
-// import { Col, Row, Container } from "../../components/Grid";
-// import { List, ListItem } from "../../components/List";
-// import { Input, TextArea, FormBtn } from "../../components/Form";
-import nyScraper from "../../scraper/nyScraper.js";
+import {Collapsible, CollapsibleItem, Dropdown, Button, NavItem, Row, Col} from "react-materialize";
 
 class Catch extends Component {
   state = {
@@ -24,7 +19,7 @@ class Catch extends Component {
   loadCatch = () => {
     API.getCatch()
       .then(res =>
-        this.setState({ catches: res.data, title: "", author: "", synopsis: "" })
+        this.setState({ catches: res.data })
       )
       .catch(err => console.log(err));
   };
@@ -57,7 +52,13 @@ class Catch extends Component {
 
   render() {
     return (
-      <p> User Page to change </p>
+      <Row>
+        <Col s={10} m={6} offset="s1 m3 l3">
+          <Collapsible accordion>
+            {this.state.catches.map(onecatch => <CollapsibleItem header={onecatch.date}> Fish Caught:{onecatch.amountCaught} Location:{onecatch.location} Time:{onecatch.time} </CollapsibleItem>)}
+          </Collapsible>
+        </Col>
+      </Row>
     );
   }
 }
