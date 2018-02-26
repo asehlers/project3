@@ -114,28 +114,34 @@ class Regulations extends Component {
             </Dropdown>
           </Col>
         </Row>
-        <Table>
-          <thead>
-            <tr>
-              <th data-field="fishName">Name</th>
-              <th data-field="season">Season</th>
-              <th data-field="length">Length</th>
-              <th data-field="limit">Limit</th>
-            </tr>
-          </thead>
-          <tbody>
-          {this.state.regulationOutput.map(regulation => {
-                return(
-                  <tr>
-                    <td>{regulation.fishName}</td>
-                    <td>{regulation.season}</td>
-                    <td>{regulation.length}</td>
-                    <td>{regulation.limit}</td>
+        <Row>
+          <Col s={1}>
+          </Col>
+          <Col  className="s10">
+            <Table>
+              <thead>
+                <tr>
+                  <th data-field="fishName">Name</th>
+                  <th data-field="season">Season</th>
+                  <th data-field="length">Length</th>
+                  <th data-field="limit">Limit</th>
                 </tr>
-                );
-              })}
-          </tbody>
-        </Table>
+              </thead>
+              <tbody>
+              {this.state.regulationOutput.map(regulation => {
+                    return(
+                      <tr>
+                        <td>{regulation.fishName}</td>
+                        <td>{regulation.season}</td>
+                        <td>{regulation.length}</td>
+                        <td>{regulation.limit}</td>
+                    </tr>
+                    );
+                  })}
+              </tbody>
+            </Table>
+          </Col>
+        </Row>
       </div>
     );
   }
