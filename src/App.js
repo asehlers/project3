@@ -5,7 +5,7 @@ import './App.css'
 import LoginForm from './components/Login/LoginForm'
 import SignupForm from './components/Signup/SignupForm'
 import Home from './components/Home/Home'
-import Catch from './pages/Catch'
+import User from './pages/User'
 import TopNav from './components/TopNav'
 import Regulations from "./pages/Regulaitons"
 
@@ -101,8 +101,8 @@ class App extends Component {
 				/>
 				<Route exact path="/signup" component={SignupForm} />
 
-				{/* Route for catch */}
-				<Route exact path="/catch" component={Catch} />
+				{/* Route for User */}
+				<Route exact path="/user" component={User} />
 				<Route exact path="/regulations" component={Regulations} />
 			</div>
 		)

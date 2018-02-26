@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 // import { Link } from "react-router-dom";
 import {Collapsible, CollapsibleItem, Dropdown, Button, NavItem, Row, Col} from "react-materialize";
+import Catch from "../../components/Catch";
 
-class Catch extends Component {
+class User extends Component {
   state = {
     catches: []
   };
@@ -55,7 +56,7 @@ class Catch extends Component {
       <Row>
         <Col s={10} m={6} offset="s1 m3 l3">
           <Collapsible accordion>
-            {this.state.catches.map(onecatch => <CollapsibleItem header={onecatch.date}> Fish Caught:{onecatch.amountCaught} Location:{onecatch.location} Time:{onecatch.time} </CollapsibleItem>)}
+            {this.state.catches.map(onecatch => <Catch catch={onecatch}> </Catch>)}
           </Collapsible>
         </Col>
       </Row>
@@ -63,4 +64,4 @@ class Catch extends Component {
   }
 }
 
-export default Catch;
+export default User;
