@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, Redirect } from 'react-router-dom'
 import './App.css'
 import LoginForm from './components/Login/LoginForm'
 import SignupForm from './components/Signup/SignupForm'
 import Home from './components/Home/Home'
-import User from './pages/User'
+import UserPage from './pages/UserPage'
 import TopNav from './components/TopNav'
 import Regulations from "./pages/Regulaitons"
 
@@ -71,27 +71,12 @@ class App extends Component {
 	}
 
 	render() {
-		const loggedInStatus = this.state.loggedIn;
-		let toDisplay;
-		
-		//If user is logged in the component that is displayed is their "Hompage". Otherwise, the login screen. 
-		if(loggedInStatus){
-			toDisplay = <Home user={this.state.user} />
-		}else{
-			toDisplay = <LoginForm _login={this._login} _googleSignin={this._googleSignin}/>
-		}
-
 		return (
 			<div className="App">
-
-				{/* {Nav */}
-				<TopNav _logout={this._logout} loggedIn={this.state.loggedIn} user={this.state.user}/>
-
-				{/* {This is just here for reference} */}
-				<h1>This is the main App component</h1>
+					{/* Navbar that displays on every page */}
+				<TopNav _logout={this._logout} loggedIn={this.state.loggedIn} user={this.state.user}/>		
 				
-				{/*  ROUTES */}
-				<Route exact path="/" render={() => toDisplay} />
+					{/* login route */}
 				<Route exact path="/login" 
 					render={() =>
 						<LoginForm
@@ -99,11 +84,46 @@ class App extends Component {
 							_googleSignin={this._googleSignin}
 						/>}
 				/>
+
+					{/* signup route */}
 				<Route exact path="/signup" component={SignupForm} />
 
-				{/* Route for User */}
-				<Route exact path="/user" component={User} />
-				<Route exact path="/regulations" component={Regulations} />
+				{/* home route. This will display login if not authenticated */}
+				<Route exact path="/" render={() => (
+					this.state.loggedIn ? (
+						<Home user={this.state.user} />
+					) : (
+						<LoginForm
+							_login={this._login}
+							_googleSignin={this._googleSignin}
+						/>
+					)
+				)}/>
+
+					{/* Route for UserPage This will display login if not authenticated*/}
+				<Route exact path="/user" render={() => (
+					this.state.loggedIn ? (
+						<UserPage user={this.state.user}/>
+					) : (
+						<LoginForm
+							_login={this._login}
+							_googleSignin={this._googleSignin}
+						/>
+					)
+				)}/>
+
+				{/* Route for regulations. This will display login if not authenticated*/}
+				<Route exact path="/regulations" render={() => (
+					this.state.loggedIn ? (
+						<Regulations />
+					) : (
+						<LoginForm
+							_login={this._login}
+							_googleSignin={this._googleSignin}
+						/>
+					)
+				)}/>
+				
 			</div>
 		)
 	}
