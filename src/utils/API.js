@@ -3,10 +3,11 @@ import axios from "axios";
 export default {
   // Gets all regulation
   getRegulation: function() {
+    console.log("in API getRegulation()");
     return axios.get("/api/regulation");
   },
   // Gets the regulation with the given id
-  getRegulation: function(id) {
+  getRegulationById: function(id) {
     return axios.get("/api/regulation/" + id);
   },
   // Deletes the regulation with the given id
@@ -22,7 +23,7 @@ export default {
     return axios.get("/api/catch");
   },
   // Gets the catch with the given id
-  getCatch: function(id) {
+  getCatchById: function(id) {
     return axios.get("/api/catch/" + id);
   },
   // Deletes the catch with the given id

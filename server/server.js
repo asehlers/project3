@@ -130,7 +130,7 @@ app.listen(PORT, () => {
 // 	"length",
 // 	"limit",
 // 	"New Jersey", 
-// 	"Fresg Water",
+// 	"Fresh Water",
 // 	"tbody tr"]
 // );
 
