@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 // import { Link } from "react-router-dom";
-import {Dropdown, Button, NavItem} from "react-materialize";
+import {Dropdown, Button, NavItem, Row, Col} from "react-materialize";
 class Regulations extends Component {
   state = {
     regulations: []
@@ -53,18 +53,26 @@ class Regulations extends Component {
     return (
       // <p> This is just a test </p>
       <div>
-      <Dropdown trigger={
-          <Button>States</Button>
-        }>
-        <NavItem>New York</NavItem>
-        <NavItem>New Jersey</NavItem>
-        <NavItem>Pennsylvania</NavItem>
-      </Dropdown>
-      <Dropdown trigger={
-          <Button>Fish</Button>
-        }>
-        {this.state.regulations.map(regulation => <NavItem>{regulation.fishName}</NavItem>)}
-      </Dropdown>
+        <Row>
+          <Col className="s12">
+            <Dropdown trigger={
+                <Button>States</Button>
+              }>
+              <NavItem>New York</NavItem>
+              <NavItem>New Jersey</NavItem>
+              <NavItem>Pennsylvania</NavItem>
+            </Dropdown>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="s12">
+            <Dropdown trigger={
+                <Button large >---------------------Fish-------------------------</Button>
+              }>
+              {this.state.regulations.map(regulation => <NavItem>{regulation.fishName}</NavItem>)}
+            </Dropdown>
+          </Col>
+        </Row>
       </div>
     );
   }

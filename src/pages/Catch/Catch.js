@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 // import { Link } from "react-router-dom";
-import {Collapsible, CollapsibleItem} from "react-materialize";
+import {Collapsible, CollapsibleItem, Dropdown, Button, NavItem, Row, Col} from "react-materialize";
 
 class Catch extends Component {
   state = {
@@ -52,9 +52,13 @@ class Catch extends Component {
 
   render() {
     return (
-      <Collapsible accordion>
-        {this.state.catches.map(onecatch => <CollapsibleItem header="onecatch.date"> onecatch.amountCaught </CollapsibleItem>)}
-      </Collapsible>
+      <Row>
+        <Col s={10} m={6} offset="s1 m3 l3">
+          <Collapsible accordion>
+            {this.state.catches.map(onecatch => <CollapsibleItem header={onecatch.date}> Fish Caught:{onecatch.amountCaught} Location:{onecatch.location} Time:{onecatch.time} </CollapsibleItem>)}
+          </Collapsible>
+        </Col>
+      </Row>
     );
   }
 }
