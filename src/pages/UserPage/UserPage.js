@@ -4,12 +4,16 @@ import API from "../../utils/API";
 import {Collapsible, CollapsibleItem, Dropdown, Button, NavItem, Row, Col} from "react-materialize";
 import Catch from "../../components/Catch";
 
-class User extends Component {
+class UserPage extends Component {
   state = {
+    user : "",
     catches: []
   };
 
   componentDidMount() {
+    this.setState({
+      user: this.props.user
+    });
     this.loadCatch();
     // let tempRegs = nyScraper();
     // API.saveRegulation(tempRegs[0])
@@ -64,4 +68,4 @@ class User extends Component {
   }
 }
 
-export default User;
+export default UserPage;
