@@ -25,13 +25,13 @@ const scraper = (address, values) => { request(address, function(error, response
 			var value1 = $(children[1]).text();
 			var value2 = $(children[2]).text();
 			var value3 = $(children[3]).text();
-			var value4 = $(children[3]).text();
+			var value4 = $(children[4]).text();
 			results.push({
 				state: values[4],
 				[values[0]]: value0,
-				[values[1]]: value2,
-				[values[2]]: value3,
-				[values[3]]: value4,
+				[values[1]]: value1,
+				[values[2]]: value2,
+				[values[3]]: value3,
 				regulationLocation: values[5]
 			});
 			}

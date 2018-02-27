@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 // import { Link } from "react-router-dom";
-import {Dropdown, Button, NavItem, Row, Col, Table} from "react-materialize";
+import {Dropdown, Button, NavItem, Row, Col, Table, Input} from "react-materialize";
 
 class Regulations extends Component {
   state = {
     regulations: [],
     visibleRegulations: [],
+    nameList: [],
     state: "",
     fishName: "",
     regulationOutput: []
@@ -47,20 +48,26 @@ class Regulations extends Component {
   };
 
   handleStateChange = event => {
-    event.preventDefault();
-    console.log("event.target", event.target.text);
-    const value = event.target.text;
+    // event.preventDefault();
+    console.log("event.target", event.target.value);
+    const value = event.target.value;
     const visibleRegulations = this.state.regulations.filter(regulation => regulation.state === value);
+    let nameList = visibleRegulations.map(regulation => regulation.fishName);
+
+    nameList = nameList.filter(function(elem, index, self) {
+      return index == self.indexOf(elem);
+    });
     this.setState({
       state: value,
-      visibleRegulations: visibleRegulations
+      visibleRegulations: visibleRegulations,
+      nameList: nameList
     });
   };
 
   handleFishChange = event => {
     event.preventDefault();
-    console.log("event.target", event.target.text);
-    const value = event.target.text;
+    console.log("event.target", event.target.value);
+    const value = event.target.value;
     const regulationOutput = this.state.visibleRegulations.filter(regulation => regulation.fishName === value);
     this.setState({
       fishName: value,
@@ -86,8 +93,8 @@ class Regulations extends Component {
       // <p> This is just a test </p>
       <div>
         <Row>
-          <Col className="s12">
-            <Dropdown trigger={
+          <Col offset="s1" s={10}>
+            {/* <Dropdown trigger={
                 <Button>States</Button>
               }>
               <NavItem onClick={this.handleStateChange}>New York</NavItem>
@@ -95,11 +102,17 @@ class Regulations extends Component {
               <NavItem onClick={this.handleStateChange}>New Jersey</NavItem>
               <NavItem divider />
               <NavItem onClick={this.handleStateChange}>Pennsylvania</NavItem>
-            </Dropdown>
+            </Dropdown> */}
+            <Input s={12} offset="1" onChange={this.handleStateChange} type='select' label="Materialize Select" defaultValue='New York'>
+              <option value='New York'>New York</option>
+              <option value='New Jersey'>New Jersey</option>
+              <option value='Pennsylvania'>Pennsylvania</option>
+            </Input>
           </Col>
         </Row>
         <Row>
-          <Col className="s12">
+          <Col offset="s1" s={10}>
+          {/* <Col className="s12">
             <Dropdown trigger={
                 <Button large >---------------------Fish-------------------------</Button>
               }>
@@ -112,6 +125,14 @@ class Regulations extends Component {
                 );
               })}
             </Dropdown>
+          </Col> */}
+          <Input s={12} onChange={this.handleFishChange} type='select' label="Materialize Select">
+            {this.state.nameList.map(name => {
+              return(
+                  <option value={name}>{name}</option>
+                );
+              })}
+          </Input>
           </Col>
         </Row>
         <Row>
@@ -125,6 +146,7 @@ class Regulations extends Component {
                   <th data-field="season">Season</th>
                   <th data-field="length">Length</th>
                   <th data-field="limit">Limit</th>
+                  <th data-field="location">Location</th>
                 </tr>
               </thead>
               <tbody>
@@ -135,6 +157,7 @@ class Regulations extends Component {
                         <td>{regulation.season}</td>
                         <td>{regulation.length}</td>
                         <td>{regulation.limit}</td>
+                        <td>{regulation.regulationLocation}</td>
                     </tr>
                     );
                   })}

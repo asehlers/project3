@@ -7,7 +7,7 @@ import SignupForm from './components/Signup/SignupForm'
 import Home from './components/Home/Home'
 import UserPage from './pages/UserPage'
 import TopNav from './components/TopNav'
-import Regulations from "./pages/Regulaitons"
+import Regulations from "./pages/Regulations"
 
 
 class App extends Component {
