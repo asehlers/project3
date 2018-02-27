@@ -12,6 +12,10 @@
   margin-bottom: 0px;
 }
 
+.nav-wrapper{
+  text-align: left;
+}
+
 .App-title {
   font-size: 1.5em;
 }
@@ -24,3 +28,48 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.row {
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    }
+    #map {
+    
+    align-content: center;
+    height: 75%;
+    width: 100%;
+    }
+    
+    html, body {
+    background-color: #f3f2f2;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    }
+    main {
+    flex: 1 0 auto;
+    }
+    
+    #buttons {
+    margin-left: 40%;
+    }
+    #footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-top: 3px solid #dcda65;
+    }
+    .home, .list, .weather, .profile {
+    color: #dcda65;
+    }
+    .fin {
+    font-family: 'Coda', cursive;
+    padding-left: 20px;
+    font-size: 200%;
+    }
+    

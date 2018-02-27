@@ -41,5 +41,9 @@ export default {
   // Gets the user with the given id
   getUser: function(id) {
     return axios.get("/api/users/" + id);
+  },
+  // Gets Weather data from location
+  getWeather: function(location) {
+    return axios.get("/api/weather")
   }
 };
