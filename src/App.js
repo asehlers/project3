@@ -8,7 +8,7 @@ import Home from './components/Home/Home'
 import UserPage from './pages/UserPage'
 import TopNav from './components/TopNav'
 import Regulations from "./pages/Regulations"
-
+import CatchEntry from "./pages/CatchEntry"
 
 class App extends Component {
 	constructor() {
@@ -123,7 +123,7 @@ class App extends Component {
 						/>
 					)
 				)}/>
-				
+				<Route exact path="/catch/add" component={CatchEntry}/>
 			</div>
 		)
 	}

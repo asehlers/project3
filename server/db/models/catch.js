@@ -18,7 +18,6 @@ const catchSchema = new Schema({
   location: { type: String, required: true },
   time: String,
   date: { type: Date, default: Date.now },
-  notes: String,
   catchDetails: [detailedCatch]
 });
 
