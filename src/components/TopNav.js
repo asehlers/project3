@@ -10,6 +10,8 @@ const TopNav  = props => {
 			<Navbar brand='FinTastic' className='green accent-4' right fixed>
 				<li><Header user={props.user}/></li>
         <li><NavLink to='/'>Home</NavLink></li>
+				<li><NavLink to='/catch/add'>Add Catch</NavLink></li>
+				<li><NavLink to='/regulations'>Regulations</NavLink></li>
         <li><NavLink to='#' onClick={props._logout}>Logout</NavLink></li>
       </Navbar>
 		)
