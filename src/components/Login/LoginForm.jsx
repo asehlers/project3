@@ -2,14 +2,16 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 // import googleButton from './google_signin_buttons/web/1x/btn_google_signin_dark_disabled_web.png'
 import googleButton from './google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png'
-import {Card, CardTitle, Row,Col, Input} from 'react-materialize'
+import {Card, CardTitle, Row,Col, Input, Button} from 'react-materialize'
 
 class LoginForm extends Component {
 	constructor() {
 		super()
 		this.state = {
 			username: '',
+			usernameError:'',
 			password: '',
+			passwordError:'',
 			redirectTo: null
 		}
 		// this.googleSignin = this.googleSignin.bind(this)
@@ -27,14 +29,11 @@ class LoginForm extends Component {
 		event.preventDefault()
 		console.log('handleSubmit')
 		this.props._login(this.state.username, this.state.password)
-		this.setState({
-			redirectTo: '/'
-		})
 	}
 
 	render() {
 		if (this.state.redirectTo) {
-			return <Redirect to={{ pathname: this.state.redirectTo }} />
+			return <Redirect to={this.state.redirectTo } />
 		} else {
 			return (
 			<Row>	
@@ -50,6 +49,7 @@ class LoginForm extends Component {
 								type="email" 
 								label="Username"
 								name="username"
+								error={this.state.usernameError}
 								value={this.state.username}
 								onChange={this.handleChange} 
 								s={12} />
@@ -62,7 +62,7 @@ class LoginForm extends Component {
 								s={12} />
 						</Row>
 						<Row>
-							<button onClick={this.handleSubmit}>Login</button>
+							<Button onClick={this.handleSubmit}>Login</Button>
 						</Row>
 						<Row>
 							<a href="/auth/google">

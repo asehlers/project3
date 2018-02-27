@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
-import {Row, Col, Input} from 'react-materialize'
+import {Row, Col, Input, Button} from 'react-materialize'
 
 class SignupForm extends Component {
 	constructor() {
@@ -29,7 +29,13 @@ class SignupForm extends Component {
 				password: this.state.password
 			})
 			.then(response => {
-				console.log(response)})
+				console.log(response)
+				if (response.status === 200){
+					this.setState({
+						redirectTo: '/'
+					})
+				}
+			})
 			.catch(error => {
 				console.log(error.response.data)})
 			}
@@ -69,7 +75,7 @@ class SignupForm extends Component {
 					/>
 				</Row>
 				<Row>
-					<button onClick={this.handleSubmit}>Sign Up</button>
+					<Button onClick={this.handleSubmit}>Sign Up</Button>
 				</Row>
 			</div>
 		)
