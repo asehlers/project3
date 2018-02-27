@@ -22,7 +22,7 @@ class UserPage extends Component {
   }
 
   loadCatch = () => {
-    API.getCatch()
+    API.getCatchById(this.props.user._id)
       .then(res =>
         this.setState({ catches: res.data })
       )

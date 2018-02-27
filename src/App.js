@@ -139,12 +139,21 @@ class App extends Component {
 					)
 				)}/>
 
-				<Route exact path="/catch/add" component={CatchEntry}/>
-
 				{/* Weather Route	 */}
 				<Route exact path="/weather" render={() => (
 					this.state.loggedIn ? (
 						<WeatherSearch />
+                                             					) : (
+						<LoginForm
+							_login={this._login}
+							_googleSignin={this._googleSignin}
+						/>
+					)
+				)}/>
+
+				<Route exact path="/catchentry" render={() => (
+					this.state.loggedIn ? (
+						<CatchEntry user={this.state.user}/>
 					) : (
 						<LoginForm
 							_login={this._login}
