@@ -40,7 +40,7 @@ class LoginForm extends Component {
 				<Col l= {3}>
 				</Col>
 				<Col l={6}>
-				<Card header={<CardTitle reveal image={"https://lorempixel.com/800/400/nature/"} waves='light'/>}
+				<Card header={<CardTitle reveal image={"https://i.imgur.com/UFI6h.jpg"} waves='light'/>}
 					title="Log In"
 					reveal={
 						<div className = "container">	
