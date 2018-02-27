@@ -14,12 +14,15 @@ class CatchEntry extends Component {
     notes: "",
     amountCaught: 0,
     location: "",
-    time: ""
-  };
+		time: "",
+		userid: ""
+};
 
   componentDidMount() {
+		console.log(this.props.user)
     this.setState({
-      location: "My basement"
+			location: "My basement",
+			userid: this.props.user._id
     });
     // this.loadCatch();
     // let tempRegs = nyScraper();
@@ -50,7 +53,8 @@ class CatchEntry extends Component {
         }],
         amountCaught: this.state.amountCaught,
         location: this.state.location,
-        time: this.state.time
+				time: this.state.time,
+				userid: this.state.userid
       })
         .then(res => this.loadCatch())
         .catch(err => console.log(err));
@@ -59,8 +63,8 @@ class CatchEntry extends Component {
   render() {
     return (
       <div>
-        I don't see you
       <Row>
+				<Col s={10} offset="s1">
 			  <Input
 					name="amountCaught"
 					type="number" 
@@ -151,6 +155,7 @@ class CatchEntry extends Component {
 					value={this.state.confirmPassword}
 					s={12} 
 				/> */}
+				</Col>
 			</Row>
 			<Row>
 				<Button onClick={this.handleFormSubmit}>Enter Catch</Button>

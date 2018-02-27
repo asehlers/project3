@@ -14,6 +14,7 @@ const detailedCatch = new Schema({
 
 //define catch schema for high level information
 const catchSchema = new Schema({
+  userid: {type: String},
   amountCaught: { type: Number, required: true },
   location: { type: String, required: true },
   time: String,

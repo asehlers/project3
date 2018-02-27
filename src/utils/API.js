@@ -24,6 +24,7 @@ export default {
   },
   // Gets the catch with the given id
   getCatchById: function(id) {
+    console.log("id", id);
     return axios.get("/api/catch/" + id);
   },
   // Deletes the catch with the given id

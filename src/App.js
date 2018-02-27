@@ -137,7 +137,17 @@ class App extends Component {
 						/>
 					)
 				)}/>
-				<Route exact path="/catch/add" component={CatchEntry}/>
+
+				<Route exact path="/catchentry" render={() => (
+					this.state.loggedIn ? (
+						<CatchEntry user={this.state.user}/>
+					) : (
+						<LoginForm
+							_login={this._login}
+							_googleSignin={this._googleSignin}
+						/>
+					)
+				)}/>
 			</div>
 		)
 	}
