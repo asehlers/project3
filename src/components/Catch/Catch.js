@@ -39,10 +39,10 @@ const Catch = props => {
           <span> {props.catch.catchDetails[0].notes == null ? "" : "Notes: "+props.catch.catchDetails[0].notes} </span>
         </Col>
         <Col s={4}>
-          <span> {props.catch.catchDetails[0].length == null ? "" : "Length: "+props.catch.catchDetails[0].length} </span>
+          <span> {props.catch.catchDetails[0].length == null ? "" : "Length: "+props.catch.catchDetails[0].length+" in"} </span>
         </Col>
         <Col s={4}>
-          <span> {props.catch.catchDetails[0].weight == null ? "" : "Weight: "+props.catch.catchDetails[0].weight} </span>
+          <span> {props.catch.catchDetails[0].weight == null ? "" : "Weight: "+props.catch.catchDetails[0].weight+" lbs"} </span>
         </Col>
       </Row>
     </CollapsibleItem>);
