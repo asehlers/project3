@@ -13,7 +13,7 @@ module.exports = {
   //findById returns catch by given id-no planned use
   findById: function(req, res) {
     db.Catch
-      .findById(req.params.id)
+      .find().where('userid').equals(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
