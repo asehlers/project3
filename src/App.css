@@ -12,6 +12,10 @@
   margin-bottom: 0px;
 }
 
+.nav-wrapper{
+  text-align: left;
+}
+
 .App-title {
   font-size: 1.5em;
 }

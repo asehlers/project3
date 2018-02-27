@@ -8,6 +8,7 @@ import Home from './components/Home/Home'
 import UserPage from './pages/UserPage'
 import TopNav from './components/TopNav'
 import Regulations from "./pages/Regulations"
+import Location from "./components/Location/Location"
 
 
 class App extends Component {
@@ -104,6 +105,18 @@ class App extends Component {
 				<Route exact path="/user" render={() => (
 					this.state.loggedIn ? (
 						<UserPage user={this.state.user}/>
+					) : (
+						<LoginForm
+							_login={this._login}
+							_googleSignin={this._googleSignin}
+						/>
+					)
+				)}/>
+
+				{/* location page to add catch */}
+				<Route exact path="/catch/add" render={() => (
+					this.state.loggedIn ? (
+						<Location />
 					) : (
 						<LoginForm
 							_login={this._login}
