@@ -27,7 +27,6 @@ class WeatherSearch extends Component {
 		this.searchWeather(this.state.search)
 	};
 	
-
 	render() {
 		return(
 			<Col m={6} s={12}>

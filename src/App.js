@@ -10,6 +10,7 @@ import TopNav from './components/TopNav'
 import Regulations from "./pages/Regulations"
 import CatchEntry from "./pages/CatchEntry"
 import Location from "./components/Location/Location"
+import WeatherSearch from "./components/Weather/WeatherPage"
 
 
 class App extends Component {
@@ -131,6 +132,18 @@ class App extends Component {
 					this.state.loggedIn ? (
 						<Regulations />
 					) : (
+						<LoginForm
+							_login={this._login}
+							_googleSignin={this._googleSignin}
+						/>
+					)
+				)}/>
+
+				{/* Weather Route	 */}
+				<Route exact path="/weather" render={() => (
+					this.state.loggedIn ? (
+						<WeatherSearch />
+                                             					) : (
 						<LoginForm
 							_login={this._login}
 							_googleSignin={this._googleSignin}
