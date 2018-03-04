@@ -21,7 +21,7 @@ class CatchEntry extends Component {
   componentDidMount() {
 		console.log(this.props.user)
     this.setState({
-			location: "My basement",
+			// location: "My basement",
 			userid: this.props.user._id
     });
     // this.loadCatch();
@@ -82,8 +82,8 @@ class CatchEntry extends Component {
 				/>
         <Input
 					name="location" 
-          label="Location, will auto enter"
-          disabled
+          label="Location"
+          // disabled
 					value={this.state.location}
 					onChange={this.handleInputChange} 
 					s={12} 

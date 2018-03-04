@@ -94,7 +94,8 @@ class App extends Component {
 				{/* home route. This will display login if not authenticated */}
 				<Route exact path="/" render={() => (
 					this.state.loggedIn ? (
-						<Home user={this.state.user} />
+						// <Home user={this.state.user} />
+						<UserPage user={this.state.user}/>
 					) : (
 						<LoginForm
 							_login={this._login}
@@ -116,7 +117,7 @@ class App extends Component {
 				)}/>
 
 				{/* location page to add catch */}
-				<Route exact path="/catch/add" render={() => (
+				{/* <Route exact path="/catch/add" render={() => (
 					this.state.loggedIn ? (
 						<Location />
 					) : (
@@ -125,7 +126,7 @@ class App extends Component {
 							_googleSignin={this._googleSignin}
 						/>
 					)
-				)}/>
+				)}/> */}
 
 				{/* Route for regulations. This will display login if not authenticated*/}
 				<Route exact path="/regulations" render={() => (
@@ -140,7 +141,7 @@ class App extends Component {
 				)}/>
 
 				{/* Weather Route	 */}
-				<Route exact path="/weather" render={() => (
+				{/* <Route exact path="/weather" render={() => (
 					this.state.loggedIn ? (
 						<WeatherSearch />
                                              					) : (
@@ -149,9 +150,9 @@ class App extends Component {
 							_googleSignin={this._googleSignin}
 						/>
 					)
-				)}/>
+				)}/> */}
 
-				<Route exact path="/catchentry" render={() => (
+				<Route exact path="/catch/add" render={() => (
 					this.state.loggedIn ? (
 						<CatchEntry user={this.state.user}/>
 					) : (
