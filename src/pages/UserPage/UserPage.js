@@ -7,7 +7,8 @@ import Catch from "../../components/Catch";
 class UserPage extends Component {
   state = {
     user : "",
-    catches: []
+    catches: [],
+    otherCatches: []
   };
 
   componentDidMount() {
@@ -25,6 +26,11 @@ class UserPage extends Component {
     API.getCatchById(this.props.user._id)
       .then(res =>
         this.setState({ catches: res.data })
+      )
+      .catch(err => console.log(err));
+      API.getCatch()
+      .then(res =>
+        this.setState({ otherCatches: res.data })
       )
       .catch(err => console.log(err));
   };
@@ -57,6 +63,8 @@ class UserPage extends Component {
 
   render() {
     return (
+      <div>
+      <h2> Your Catches </h2>
       <Row>
         <Col s={10} m={6} offset="s1 m3 l3">
           <Collapsible accordion>
@@ -64,6 +72,15 @@ class UserPage extends Component {
           </Collapsible>
         </Col>
       </Row>
+      <h2> All Catches </h2>
+      <Row>
+        <Col s={10} m={6} offset="s1 m3 l3">
+          <Collapsible accordion>
+            {this.state.otherCatches.map(onecatch => <Catch catch={onecatch}> </Catch>)}
+          </Collapsible>
+        </Col>
+      </Row>
+      </div>
     );
   }
 }
